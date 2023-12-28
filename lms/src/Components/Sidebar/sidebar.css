@@ -1,0 +1,37 @@
+.sidebar {
+	background-color: whitesmoke;
+	width: fit-content;
+	padding: 2rem;
+	position: fixed;
+	top: 60px;
+	bottom: 0;
+	height: calc(100vh - 80px);
+	border-radius: 52px solid black;
+}
+
+.sidebar-menu {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.sidebar-menu li {
+	display: flex;
+	margin-bottom: 10px;
+}
+
+.sidebar-menu li a {
+	display: flex;
+	align-items: center;
+	color: black;
+	text-decoration: none;
+}
+
+.sidebar-menu li a:hover {
+	color: white;
+	background-color: var(--color-primary);
+	border-radius: 5px;
+	padding: 5px;
+}
+
+/* Add active class styles for the active link */

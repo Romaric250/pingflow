@@ -1,0 +1,66 @@
+@import url("https://fonts.cdnfonts.com/css/proxima-nova-2");
+
+:root {
+	line-height: 1.5;
+	font-weight: 400;
+	color-scheme: light dark;
+	color: rgba(255, 255, 255, 0.87);
+	background-color: #242424;
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
+	--color-orange: #055049;
+	--color-primary: #0ba99a;
+	--font: "Proxima Nova", sans-serif;
+	--color-blue: #faf35e;
+	--color-neutral: #f0f0f0;
+	--color-black: #404040;
+	--color-aqua: #97f2e8;
+	--shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.05);
+}
+
+a {
+	font-weight: 500;
+	color: #646cff;
+	text-decoration: inherit;
+}
+
+a:hover {
+	color: #535bf2;
+}
+
+body {
+	margin: 0;
+}
+
+button {
+	border-radius: 8px;
+	border: 1px solid transparent;
+	font-size: 1em;
+	font-weight: 500;
+	outline: none;
+	cursor: pointer;
+	transition: border-color 0.25s;
+}
+
+button:hover {
+	border-color: #646cff;
+}
+
+button:focus, button:focus-visible {
+	outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme:light) {
+	:root {
+		color: #213547;
+		background-color: #ffffff;
+	}
+
+	a:hover {
+		color: #747bff;
+	}
+
+}

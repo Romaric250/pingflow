@@ -1,0 +1,155 @@
+.message-page {
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+	background-color: rgb(232, 237, 232);
+	color: white;
+	margin-left: 1rem;
+	padding: 2rem;
+	padding-top: 2rem;
+	margin-top: 3rem;
+}
+
+.messages-section {
+	flex: 2;
+	color: black;
+	font-size: large;
+	font-family: var(--font);
+	box-shadow: var(--shadow);
+	background-color: whitesmoke;
+	padding: 20px;
+}
+
+.send-message-section {
+	color: black;
+	font-size: medium;
+	font-weight: 400;
+	flex: 1;
+	font-family: var(--font);
+	box-shadow: var(--shadow);
+	background-color: whitesmoke;
+	padding: 20px;
+	height: 400px;
+}
+
+.title__message {
+	font-weight: 400;
+}
+
+.messages-section {
+	flex: 1;
+	background-color: #f2f2f2;
+	padding: 20px;
+	max-height: 500px;
+	overflow-y: auto;
+	position: relative;
+}
+
+.messages-section::after {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 1px;
+	background-color: #ccc;
+	margin-top: 10px;
+}
+
+.send-message-section .title__message::after {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 1px;
+	background-color: #ccc;
+	margin-top: 10px;
+}
+
+.messages-section .title__message::after {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 1px;
+	background-color: #ccc;
+	margin-top: 10px;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.form-group textarea {
+	height: 70px;
+	width: 100%;
+	resize: none;
+}
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+}
+
+label {
+	font-weight: bold;
+}
+
+input[type="text"], textarea {
+	padding: 5px;
+}
+
+button {
+	padding: 10px 20px;
+	background-color: var(--color-primary);
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #28889b;
+}
+
+.message-item {
+	display: flex;
+	margin-bottom: 10px;
+}
+
+.sender-info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-right: 10px;
+}
+
+.profile-image {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
+.sender-name {
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+.message-content {
+	background-color: white;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.timestamp {
+	font-size: 12px;
+	color: gray;
+}
+
+h2 {
+	margin-top: 0;
+}
+
+select {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
