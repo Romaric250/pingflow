@@ -1,8 +1,8 @@
 {
-  "name": "itest",
+  "name": "iping",
   "version": "1.0.0",
   "description": "A command-line tool to test your internet speed in real-time with a stylish progress bar.",
-  "main": "dist/itest.js",
+  "main": "dist/iping.js",
   "type": "module",
   "scripts": {
     "build": "tsc",
@@ -23,13 +23,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Romaric250/itest.git"
+    "url": "https://github.com/Romaric250/iping.git"
   },
   "bin": {
     "itest": "./dist/itest.js"
   },
   "bugs": {
-    "url": "https://github.com/Romaric250/itest/issues"
+    "url": "https://github.com/Romaric250/iping/issues"
   },
   "license": "ISC",
   "dependencies": {
