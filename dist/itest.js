@@ -12,16 +12,18 @@ import { performance } from "perf_hooks";
 import ProgressBar from "progress";
 import chalk from "chalk";
 const testDownloadSpeed = (url, sizeInMB) => __awaiter(void 0, void 0, void 0, function* () {
-    const totalSize = sizeInMB * 5;
+    const totalSize = sizeInMB;
     let totalReceivedMB = 0;
     let totalDuration = 0;
-    const bar = new ProgressBar(`${chalk.cyan("Downloading")} [:bar] :percent`, {
+    const bar = new ProgressBar(`${chalk.cyan("In Progress...")} [:bar] :percent`, {
         total: totalSize,
         width: 30,
-        complete: chalk.green("="),
-        incomplete: chalk.gray(" "),
+        complete: chalk.green("█"),
+        incomplete: chalk.gray("░"),
+        renderThrottle: 16,
     });
-    console.log(chalk.blue("Starting download..."));
+    console.log(chalk.bold.blue("🚀Starting Test..."));
+    console.log(chalk.gray("Testing speed..."));
     yield new Promise((resolve, reject) => {
         const startTime = performance.now();
         const options = {
@@ -51,13 +53,15 @@ const testDownloadSpeed = (url, sizeInMB) => __awaiter(void 0, void 0, void 0, f
     });
     const durationInSeconds = totalDuration / 1000;
     const averageSpeed = (totalReceivedMB / durationInSeconds) * 8;
+    console.log(chalk.bold.blue("Test Completed"));
+    console.log(chalk.green(`Download Speed: ${averageSpeed.toFixed(2)} Mbps`));
     return averageSpeed;
 });
 const downloadUrl = "http://ipv4.download.thinkbroadband.com/10MB.zip";
 const downloadSize = 10;
 testDownloadSpeed(downloadUrl, downloadSize)
     .then((speed) => {
-    console.log(chalk.green(`Download Speed: ${speed.toFixed(2)} Mbps`));
+    console.log(chalk.green(`Your Internet speed is: ${speed.toFixed(2)} Mbps`));
 })
     .catch((err) => {
     console.error(chalk.red("Error during speed test:"), err);

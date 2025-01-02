@@ -5,10 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-  
-  "build": "tsc",
-  "itest": "node dist/itest.js",
-  "dev": "ts-node src/itest.ts"
+    "build": "tsc",
+    "itest": "node dist/itest.js",
+    "dev": "ts-node src/itest.ts"
   },
   "keywords": [],
   "author": "",
@@ -24,13 +23,12 @@
     "organiseme": "^1.0.4",
     "progress": "^2.0.3",
     "speedtest-net": "^2.2.0",
+    "systeminformation": "^5.24.4",
     "typescript": "^5.7.2"
   },
-
   "bin": {
-  "itest": "./dist/itest.js"
-},
-
+    "itest": "./dist/itest.js"
+  },
   "devDependencies": {
     "@types/node": "^22.10.2",
     "@types/progress": "^2.0.7",
