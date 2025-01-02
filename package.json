@@ -23,13 +23,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Romaric250/iping.git"
+    "url": "https://github.com/Romaric250/pingflow.git"
   },
   "bin": {
     "itest": "./dist/itest.js"
   },
   "bugs": {
-    "url": "https://github.com/Romaric250/iping/issues"
+    "url": "https://github.com/Romaric250/pingflow/issues"
   },
   "license": "ISC",
   "dependencies": {
