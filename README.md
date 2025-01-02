@@ -18,20 +18,20 @@ To install the iTest tool globally via npm, run the following command:
 
 ```bash
 npm install -g itest
-
+```
 ### Usage
 
 ```bash
    itest
 
-
+```
 ```bash
 🚀 Starting Test...
 Testing speed...
 In Progress... [█████████████████████████████░░] 92%
 Download Speed: 5.97 Mbps
 Test Completed
-
+```
 ## Contributing
 
 Contributions are welcome! Feel free to submit a pull request or open an issue to suggest improvements or report bugs.
@@ -40,11 +40,5 @@ Contributions are welcome! Feel free to submit a pull request or open an issue t
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
----
 
-
-@Romaric250
-
-
-
-
+Happy testing@Romaric250
