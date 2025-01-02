@@ -1,21 +1,21 @@
 import http from "http";
 import { performance } from "perf_hooks";
 import ProgressBar from "progress";
+import chalk from "chalk";
 
-// Function to test download speed
 const testDownloadSpeed = async (url: string, sizeInMB: number): Promise<number> => {
-    const totalSize = sizeInMB * 5; // Use a larger file for better accuracy
+    const totalSize = sizeInMB * 5; 
     let totalReceivedMB = 0;
     let totalDuration = 0;
 
-    const bar = new ProgressBar("  Downloading [:bar] :percent", {
+    const bar = new ProgressBar(`${chalk.cyan("Downloading")} [:bar] :percent`, {
         total: totalSize,
         width: 30,
-        complete: "=",
-        incomplete: " ",
+        complete: chalk.green("="),
+        incomplete: chalk.gray(" "),
     });
 
-    console.log("Starting download...");
+    console.log(chalk.blue("Starting download..."));
 
     await new Promise<void>((resolve, reject) => {
         const startTime = performance.now();
@@ -27,22 +27,17 @@ const testDownloadSpeed = async (url: string, sizeInMB: number): Promise<number>
         };
 
         http.get(url, options, (res) => {
-            console.log(`Response status: ${res.statusCode}`);
-
             let receivedMB = 0;
             res.on("data", (chunk) => {
-                const chunkMB = chunk.length / (1024 * 1024); // Convert to MB
+                const chunkMB = chunk.length / (1024 * 1024); 
                 receivedMB += chunkMB;
                 totalReceivedMB += chunkMB;
-                bar.tick(chunkMB); // Update the progress bar
-
-                console.log(`Received ${chunkMB.toFixed(2)} MB this chunk, Total: ${receivedMB.toFixed(2)} MB`);
+                bar.tick(chunkMB);
             });
 
             res.on("end", () => {
                 const endTime = performance.now();
-                totalDuration = (endTime - startTime); // Total duration in ms
-                console.log(`Download completed. Total received: ${totalReceivedMB.toFixed(2)} MB`);
+                totalDuration = (endTime - startTime);
                 resolve();
             });
 
@@ -55,18 +50,16 @@ const testDownloadSpeed = async (url: string, sizeInMB: number): Promise<number>
     });
 
     const durationInSeconds = totalDuration / 1000;
-    const averageSpeed = (totalReceivedMB / durationInSeconds) * 8; // Speed in Mbps
+    const averageSpeed = (totalReceivedMB / durationInSeconds) * 8;
     return averageSpeed;
 };
 
-const downloadUrl = "http://ipv4.download.thinkbroadband.com/10MB.zip"; // Test URL (ensure this is accessible)
-const downloadSize = 10; // File size in MB
-
-// Run the download speed test
+const downloadUrl = "http://ipv4.download.thinkbroadband.com/10MB.zip";
+const downloadSize = 10; 
 testDownloadSpeed(downloadUrl, downloadSize)
     .then((speed) => {
-        console.log(`Download Speed: ${speed.toFixed(2)} Mbps`);
+        console.log(chalk.green(`Download Speed: ${speed.toFixed(2)} Mbps`));
     })
     .catch((err) => {
-        console.error("Error during speed test:", err);
+        console.error(chalk.red("Error during speed test:"), err);
     });
