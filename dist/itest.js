@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -9,52 +8,61 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import http from "http";
-import chalk from "chalk";
-import { intro, outro, spinner, log } from "@clack/prompts";
 import { performance } from "perf_hooks";
 import ProgressBar from "progress";
 // Function to test download speed
 const testDownloadSpeed = (url, sizeInMB) => __awaiter(void 0, void 0, void 0, function* () {
-    const startTime = performance.now();
+    const totalSize = sizeInMB * 5; // Use a larger file for better accuracy
+    let totalReceivedMB = 0;
+    let totalDuration = 0;
     const bar = new ProgressBar("  Downloading [:bar] :percent", {
-        total: sizeInMB,
+        total: totalSize,
         width: 30,
         complete: "=",
         incomplete: " ",
     });
-    return new Promise((resolve, reject) => {
-        http.get(url, (res) => {
+    console.log("Starting download...");
+    yield new Promise((resolve, reject) => {
+        const startTime = performance.now();
+        const options = {
+            headers: {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"
+            }
+        };
+        http.get(url, options, (res) => {
+            console.log(`Response status: ${res.statusCode}`);
             let receivedMB = 0;
             res.on("data", (chunk) => {
-                receivedMB += chunk.length / (1024 * 1024); // Convert to MB
-                bar.tick(receivedMB > sizeInMB ? sizeInMB - bar.curr : chunk.length / (1024 * 1024));
+                const chunkMB = chunk.length / (1024 * 1024); // Convert to MB
+                receivedMB += chunkMB;
+                totalReceivedMB += chunkMB;
+                bar.tick(chunkMB); // Update the progress bar
+                console.log(`Received ${chunkMB.toFixed(2)} MB this chunk, Total: ${receivedMB.toFixed(2)} MB`);
             });
             res.on("end", () => {
                 const endTime = performance.now();
-                const durationInSeconds = (endTime - startTime) / 1000;
-                resolve((sizeInMB / durationInSeconds) * 8); // Speed in Mbps
+                totalDuration = (endTime - startTime); // Total duration in ms
+                console.log(`Download completed. Total received: ${totalReceivedMB.toFixed(2)} MB`);
+                resolve();
             });
-            res.on("error", reject);
-        }).on("error", reject);
+            res.on("error", (err) => {
+                reject(err);
+            });
+        }).on("error", (err) => {
+            reject(err);
+        });
     });
+    const durationInSeconds = totalDuration / 1000;
+    const averageSpeed = (totalReceivedMB / durationInSeconds) * 8; // Speed in Mbps
+    return averageSpeed;
 });
-const main = () => __awaiter(void 0, void 0, void 0, function* () {
-    intro(chalk.blue.bold("🚀 Internet Speed Tester"));
-    const loadSpinner = spinner();
-    try {
-        // Test Download Speed
-        loadSpinner.start(chalk.cyan("Testing download speed..."));
-        const downloadSpeed = yield testDownloadSpeed("http://ipv4.download.thinkbroadband.com/100MB.zip", 10);
-        loadSpinner.stop(chalk.green.bold(`Download Speed: ${downloadSpeed.toFixed(2)} Mbps`));
-        log.success(chalk.green("✅ Test completed successfully!"));
-    }
-    catch (error) {
-        loadSpinner.stop(chalk.red("❌ Error occurred during the test."));
-        log.error(chalk.red(error.message || "An unknown error occurred."));
-    }
-    outro(chalk.yellow.bold("Thank you for using Internet Speed Tester!"));
-});
-main().catch((err) => {
-    console.error(chalk.red("An unexpected error occurred:"), err);
-    process.exit(1);
+const downloadUrl = "http://ipv4.download.thinkbroadband.com/10MB.zip"; // Test URL (ensure this is accessible)
+const downloadSize = 10; // File size in MB
+// Run the download speed test
+testDownloadSpeed(downloadUrl, downloadSize)
+    .then((speed) => {
+    console.log(`Download Speed: ${speed.toFixed(2)} Mbps`);
+})
+    .catch((err) => {
+    console.error("Error during speed test:", err);
 });
