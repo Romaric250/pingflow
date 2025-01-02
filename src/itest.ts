@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import http from "http";
 import { performance } from "perf_hooks";
 import ProgressBar from "progress";
