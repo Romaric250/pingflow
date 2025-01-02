@@ -17,12 +17,12 @@ First, ensure you have Node.js installed on your system.
 To install the iTest tool globally via npm, run the following command:
 
 ```bash
-npm install -g itest
+npm install -g pingflow
 ```
 ### Usage
 
 ```bash
-   itest
+   pingflow
 
 ```
 ```bash
