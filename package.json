@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  
+  "build": "tsc",
+  "itest": "node dist/itest.js",
+  "dev": "ts-node src/itest.ts"
   },
   "keywords": [],
   "author": "",
@@ -22,8 +26,14 @@
     "speedtest-net": "^2.2.0",
     "typescript": "^5.7.2"
   },
+
+  "bin": {
+  "itest": "./dist/itest.js"
+},
+
   "devDependencies": {
     "@types/node": "^22.10.2",
+    "@types/progress": "^2.0.7",
     "@types/speedtest-net": "^2.1.5",
     "ts-node": "^10.9.2"
   }

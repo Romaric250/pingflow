@@ -2,8 +2,13 @@
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": "./src",
-    "module": "CommonJS",
+    "resolveJsonModule": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "target": "ES6",
-    "strict": true
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   }
 }
+
