@@ -10,11 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@clack/prompts": "^0.9.0",
     "chalk": "^5.4.1",
+    "clack": "^0.1.0",
     "commander": "^13.0.0",
     "figlet": "^1.8.0",
     "node-cron": "^3.0.3",
+    "ora": "^8.1.1",
     "organiseme": "^1.0.4",
+    "progress": "^2.0.3",
     "speedtest-net": "^2.2.0",
     "typescript": "^5.7.2"
   },
