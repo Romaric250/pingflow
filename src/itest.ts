@@ -71,7 +71,7 @@ const testDownloadSpeed = async (
           }
         }
 
-        // Initialize progress bar with the determined total size
+        // testing new commit form new localhost and to see if it works
         const bar = new ProgressBar(`${chalk.cyan("In Progress...")} [:bar] :percent`, {
           total: totalSizeMB,
           width: 30,
