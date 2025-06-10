@@ -65,9 +65,11 @@ process.on('SIGTERM', () => {
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (reason, promise) => {
+
   console.error(chalk.red('\n💥 Unhandled Promise Rejection:'));
+
   console.error(chalk.red(String(reason)));
-  
+
   if (process.env.NODE_ENV === 'development') {
     console.error(chalk.gray('Promise:'), promise);
   }
