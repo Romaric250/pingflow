@@ -12,6 +12,7 @@ import chalk from 'chalk';
  * - Network connectivity detection
  * - WiFi name and network information
  * - Ping latency testing
+ * - Network interface details (IP, gateway, DNS, etc.)
  * - Comprehensive error handling
  * - Beautiful CLI interface
  */
@@ -41,12 +42,14 @@ async function main(): Promise<void> {
       console.error(chalk.red(String(error)));
     }
 
+
     console.log(chalk.yellow('\n💡 If this error persists, please report it at:'));
     console.log(chalk.blue('https://github.com/Romaric250/pingflow/issues'));
     
     process.exit(1);
   }
 }
+
 
 // Handle process signals gracefully
 process.on('SIGINT', () => {
@@ -58,6 +61,7 @@ process.on('SIGTERM', () => {
   console.log(chalk.yellow('\n\n👋 Process terminated. Thanks for using PingFlow v2'));
   process.exit(0);
 });
+
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (reason, promise) => {
